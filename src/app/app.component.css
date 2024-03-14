@@ -44,3 +44,23 @@
 .navigation button:hover {
     background-color: #0056b3;
 }
+
+
+.navigation-list {
+    float: left;
+    width: 200px;
+  }
+  
+  .navigation-list ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .navigation-list li {
+    cursor: pointer;
+    padding: 10px;
+  }
+  
+  .navigation-list li.active {
+    background-color: lightgray;
+  }

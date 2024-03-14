@@ -11,10 +11,9 @@
   </ul>
 </div> -->
 
-<div class="charts">
+<!-- <div class="charts">
   
   <div class="chart-container" *ngIf="activeChartIndex === 0">
-    <div class="chart-title">Pie Chart</div>
     <div class="pie" [chart]="pieChart"></div>
   </div>
 
@@ -36,6 +35,7 @@
   </div>
 
   <div class="chart-container" *ngIf="activeChartIndex === 5">
+    <div class="chart-title">Donut Chart</div>
     <div class="scatter" [chart]="donutChart"></div>
   </div>
 
@@ -44,23 +44,37 @@
   </div>
 
   <div class="chart-container" *ngIf="activeChartIndex === 7">
+    <div class="chart-title">Coloumn Chart</div>
     <div class="scatter" [chart]="coloumnChart"></div>
   </div>
 
-  <div id="timelineChart" class="chart-container" *ngIf="activeChartIndex === 8">
-    <div class="scatter" [chart]="timelineChart"></div>
+  <div class="chart-container"  *ngIf="activeChartIndex === 8">
+    <div class="scatter" [chart]="paretoChart"></div>
   </div>
 
-  <div id="timelineChart" class="chart-container" *ngIf="activeChartIndex === 9">
-    <div class="scatter" [chart]="dumbellChart"></div>
+  <div class="chart-container"  *ngIf="activeChartIndex === 9">
+    <div class="scatter" [chart]="steplineChart"></div>
   </div>
+</div>
 
-  <div id="timelineChart" class="chart-container" *ngIf="activeChartIndex === 10">
-    <div class="scatter" [chart]="lollipopChart"></div>
-  </div>
+<div class="navigation">
+  <button (click)="prevChart()" [disabled]="isFirstChart()">Previous</button>
+  <button (click)="nextChart()" [disabled]="isLastChart()">Next</button>
+</div> -->
 
-  <div id="timelineChart" class="chart-container" *ngIf="activeChartIndex === 10">
-    <div class="scatter" [chart]="bubbleChart"></div>
+
+<div class="navigation-list">
+  <ul>
+    <li *ngFor="let chartConfig of charts; let i = index" (click)="setActiveChart(i)" [class.active]="isActiveChart(i)">
+      {{ chartConfig.title }}
+    </li>
+  </ul>
+</div>
+
+<div class="charts">
+  <div class="chart-container" *ngFor="let chartConfig of charts; let i = index" [style.display]="isActiveChart(i) ? 'block' : 'none'">
+    <div class="chart-title" *ngIf="chartConfig.title">{{ chartConfig.title }}</div>
+    <div class="chart" [chart]="chartConfig.chart"></div>
   </div>
 </div>
 

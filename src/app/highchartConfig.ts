@@ -1,12 +1,17 @@
 import { Chart} from "angular-highcharts";
-const data1 = [1, 1, 1, 2, 2, 2, 3, 3, 4, 4, 5];
 
-export const lineChartConfig = new Chart({
+//linechart - visualize data that changes over time.
+export const lineChartConfig = new Chart({ 
     chart: {
-        type: 'line'
+        type: 'line',
       },
       title: {
         text: 'Patients'
+      },
+      yAxis: {
+        title: {
+          text: 'Values'
+        }
       },
       credits: {
         enabled: false
@@ -20,26 +25,26 @@ export const lineChartConfig = new Chart({
   
 })
 
-
-export const pieChartConfig = new Chart({
+//donut-useful for showing the proportion of each category relative to the whole,
+export const donutChartConfig = new Chart({
     chart: {
         type: 'pie',
-        plotShadow: false,
+        
       },
     
       credits: {
         enabled: false,
       },
+
     
       plotOptions: {
         pie: {
-          innerSize: '99%',
-          borderWidth: 10,
+          innerSize: '75%',
+          borderWidth: 5,
           borderColor: '',
-          slicedOffset: 10,
           dataLabels: {
             connectorWidth: 0,
-          },
+          }, 
         },
       },
     
@@ -57,24 +62,22 @@ export const pieChartConfig = new Chart({
         {
           type: 'pie',
           data: [
-            { name: 'COVID 19', y: 1, color: '#eeeeee' },
+            { name: 'COVID 19', y: 1, color: '#eeee85' },
     
-            { name: 'HIV/AIDS', y: 2, color: '#393e46' },
+            { name: 'HIV/AIDS', y: 2, color: '#393e99' },
     
-            { name: 'EBOLA', y: 3, color: '#00adb5' },
-            { name: 'DISPORA', y: 4, color: '#eeeeee' },
+            { name: 'FLU', y: 3, color: '#00adb5' },
+            { name: 'DIARRHEA', y: 4, color: '#eeeeee' },
             { name: 'DIABETES', y: 5, color: '#506ef9' },
           ],
         },
       ],
 })
 
+//areachart - highlighting the magnitude of change over time and for comparing multiple data series.
 export const areaChartConfig = new Chart({
     chart: {
         type: 'area'
-      },
-      title: {
-        text: 'Area Chart'
       },
       credits: {
         enabled: false,
@@ -88,12 +91,13 @@ export const areaChartConfig = new Chart({
         }
       },
       series: [{
-        type: 'area', // Specify the type as 'area'
-        name: 'Series Name',
+        type: 'area', 
+        name: 'Sales',
         data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
       }]
 })
 
+//barchart- used to compare the values of different categories or to track changes over time for a single category
 export const barChartConfig = new Chart({
     chart: {
         type: 'bar'
@@ -119,7 +123,8 @@ export const barChartConfig = new Chart({
       }]
 })
 
-export const donutChartConfig = new Chart({
+//piechart - Pie charts are useful for showing the proportion of parts to a whole, making it easy to visualize percentages or fractions of a total.
+export const pieChartConfig = new Chart({
     chart: {
         type: 'pie'
       },
@@ -128,8 +133,7 @@ export const donutChartConfig = new Chart({
       },
       plotOptions: {
         pie: {
-          innerSize: '0%', // Adjust this value to create a donut chart
-          allowPointSelect: true,
+          innerSize: '0%', 
           cursor: 'pointer',
           dataLabels: {
             enabled: true,
@@ -142,15 +146,16 @@ export const donutChartConfig = new Chart({
         name: 'Data',
         
         data: [
-          { name: 'Chrome', y: 61.41 },
-          { name: 'Firefox', y: 11.84 },
-          { name: 'Edge', y: 10.85 },
-          { name: 'Safari', y: 4.67 },
-          { name: 'Other', y: 10.23 }
+          { name: 'Chrome', y: 62 },
+          { name: 'Firefox', y: 12 },
+          { name: 'Edge', y: 11},
+          { name: 'Safari', y: 4.7},
+          { name: 'Other', y: 10.3 }
         ]
       }]
 })
 
+//scatter - each point of data in a series without connection, indv data point is called marker,analyze the relationship between two variables.
 export const scatterChartConfig = new Chart({
     chart: {
         type: 'scatter'
@@ -177,7 +182,7 @@ export const scatterChartConfig = new Chart({
       }]
 })
 
-
+//spline -  type of line chart that uses a smooth curve (spline) to connect data points, rather than straight lines, 
 export const splineChartConfig = new Chart({
     
     chart: {
@@ -201,39 +206,38 @@ export const splineChartConfig = new Chart({
       }]
 })
 
+
 export const coloumnChartConfig = new Chart({
   chart: {
     type: 'column'
   },
   title: {
-    text: 'Monthly Sales Report'
+    text: 'Monthly Sales Report',
+    
   },
   xAxis: {
-    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    categories: ['Jan', 'Feb', 'Mar', 'Apr']
   },
   yAxis: {
     title: {
       text: 'Sales'
     }
   },
-  series: [{
-    type:'column',
-    name: 'Sales',
-    data: [
-      ['Jan', 10000],
-      ['Feb', 15000],
-      ['Mar', 20000],
-      ['Apr', 18000],
-      ['May', 22000],
-      ['Jun', 25000],
-      ['Jul', 27000],
-      ['Aug', 30000],
-      ['Sep', 28000],
-      ['Oct', 32000],
-      ['Nov', 35000],
-      ['Dec', 38000]
-    ]
-  }],
+  series: [
+    
+    {
+      type:'column',
+      name: 'Sales 2021', // Name of the first data series
+      data: [5000, 7000, 4000, 6000] // Data points representing sales revenue for each product category in 2021
+    },
+    {
+      type:'column',
+      name: 'Sales 2022', // Name of the second data series
+      data: [5500, 7200, 4200, 6100] // Data points representing sales revenue for each product category in 2022
+    }
+
+    
+  ],
   credits: {
     enabled: false
   },
@@ -242,184 +246,70 @@ export const coloumnChartConfig = new Chart({
   }
 })
 
-export const timelineChartConfig =new Chart({
-  chart: {
-    type: 'timeline'
-},
-xAxis: {
-    visible: false
-},
-yAxis: {
-    visible: false
-},
-title: {
-    text: 'Timeline of Space Exploration'
-},
-subtitle: {
-    text: 'Info source: <a href="https://en.wikipedia.org/wiki/Timeline_of_space_exploration">www.wikipedia.org</a>'
-},
-series: [{
-  type: 'timeline',
-    data: [{
-        name: 'First dogs',
-        label: '1951: First dogs in space',
-        description: '22 July 1951 First dogs in space (Dezik and Tsygan)'
-    }, {
-        name: 'Sputnik 1',
-        label: '1957: First artificial satellite',
-        description: '4 October 1957 First artificial satellite. First signals from space.'
-    }, {
-        name: 'First human spaceflight',
-        label: '1961: First human spaceflight (Yuri Gagarin)',
-        description: 'First human spaceflight (Yuri Gagarin), and the first human-crewed orbital flight'
-    }, {
-        name: 'First human on the Moon',
-        label: '1969: First human on the Moon',
-        description: 'First human on the Moon, and first space launch from a celestial body other than the Earth. First sample return from the Moon'
-    }]
-}]
-})
 
-export const dumbellChartConfig = new Chart({
+
+export const paretoChartConfig = new Chart({
   chart: {
-    type: 'dumbbell'
-  },
-  title: {
-    text: 'Dumbbell Chart'
+    type: 'column'
   },
   xAxis: {
-    title: {
-      text: 'X Axis Label'
-    }
+    categories: ['Category 1', 'Category 2', 'Category 3', 'Category 4', 'Category 5']
   },
-  yAxis: {
+  yAxis: [{
     title: {
-      text: 'Y Axis Label'
+      text: 'Primary Axis'
+    }
+  }, {
+    title: {
+      text: 'Secondary Axis'
+    },
+    opposite: true
+  }],
+  tooltip: {
+    shared: true
+  },
+  plotOptions: {
+    column: {
+      stacking: 'normal'
     }
   },
   series: [{
-    type:'dumbbell',
-    name: 'Dumbbell Chart',
-    data: [
-      // Each data point represents a dumbbell. Format: [x-value, low-value, high-value]
-      [1, 10, 20], // Example data point
-      [2, 15, 25], // Example data point
-      [3, 12, 22]  // Example data point
-      // Add more data points as needed
-    ],
-    marker: {
-      symbol: 'circle' // Use circle markers
+    name: 'Primary',
+    type: 'column',
+    data: [10, 7, 5, 3, 1],
+    tooltip: {
+      valueSuffix: ''
+    }
+  }, {
+    name: 'Secondary',
+    type: 'line',
+    yAxis: 1,
+    data: [50, 70, 85, 95, 100],
+    tooltip: {
+      valueSuffix: '%'
     }
   }]
 })
 
-export const lollipopChartConfig = new Chart({
+export const steplineChartConfig = new Chart({
   chart: {
-    type: 'lollipop'
-},
-
-accessibility: {
-    point: {
-        valueDescriptionFormat: '{index}. {xDescription}, {point.y}.'
-    }
-},
-
-legend: {
-    enabled: false
-},
-
-subtitle: {
-    text: '2021'
-},
-
-title: {
-    text: 'Top 10 Countries by Population'
-},
-
-tooltip: {
-    shared: true
-},
-
-xAxis: {
-    type: 'category'
-},
-
-yAxis: {
-    title: {
-        text: 'Population'
-    }
-},
-
-series: [{
-  type: 'lollipop',
-    name: 'Population',
-    data: [{
-        name: 'China',
-        y: 1444216107
-    }, {
-        name: 'India',
-        y: 1393409038
-    }, {
-        name: 'United States',
-        y: 332915073
-    }, {
-        name: 'Indonesia',
-        y: 276361783
-    }, {
-        name: 'Pakistan',
-        y: 225199937
-    }, {
-        name: 'Brazil',
-        y: 213993437
-    }, {
-        name: 'Nigeria',
-        y: 211400708
-    }, {
-        name: 'Bangladesh',
-        y: 166303498
-    }, {
-        name: 'Russia',
-        y: 145912025
-    }, {
-        name: 'Mexico',
-        y: 130262216
-    }]
-}]
-
-})
-
-export const bubbleChartConfig = new Chart({
-  chart: {
-    type: 'bubble',
-    plotBorderWidth: 1,
-    
+    type: 'line'
   },
   title: {
-    text: 'Bubble Chart'
+    text: 'Step Line Chart'
   },
   xAxis: {
-    title: {
-      text: 'X Axis'
-    }
+    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul']
   },
   yAxis: {
     title: {
-      text: 'Y Axis'
+      text: 'Values'
     }
   },
   series: [{
-    type:'bubble',
-    data: [
-      [97, 36, 79],
-      [94, 74, 60],
-      [68, 76, 58],
-      [64, 87, 56],
-      [68, 27, 73],
-      [74, 99, 42],
-      [7, 93, 87],
-      [51, 69, 40],
-      [38, 23, 33],
-      [57, 86, 31]
-    ]
+    type: 'line',
+    step: 'left',
+    name: 'Series',
+    data: [1, 3, 2, 4, 5, 7, 6]
   }]
 })
